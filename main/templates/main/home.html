@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+    <div class="col-6">
+        <h4>Users list:</h4>
+        <a href="{% url 'new_user' %}">
+            <button class="btn btn-primary btn-sm ">
+            Create new user
+            </button>
+        </a>
+        <ul><br/>
+            {% for user in uzytkownicy %}
+            <li>{{ user }}
+                <a href="{% url 'edit_user' user.id %}"> Edit </a>
+                <a href="{% url 'delete_user' user.id %}">| Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-6">
+        <h4>Groups list:</h4>
+        <a href="{% url 'new_group' %}">
+            <button class="btn btn-primary btn-sm ">
+            Create new group
+            </button>
+        </a>
+        <ul><br/>
+            {% for grupa in grupy %}
+            <li>{{ grupa }}
+            <a href="{% url 'edit_group' grupa.id %}"> Edit </a>
+            <a href="{% url 'delete_group' grupa.id %}">| Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}
